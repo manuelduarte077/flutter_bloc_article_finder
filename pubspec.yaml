@@ -1,0 +1,31 @@
+name: article_finder
+description: Flutter app which shows list of Articles from RW platform.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.15.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  http: ^0.13.4
+
+  cupertino_icons: ^1.0.4
+  google_fonts: ^2.2.0
+  cached_network_image: ^3.2.0
+  intl: ^0.17.0
+  plugin_platform_interface: ^2.1.2
+  rxdart: ^0.27.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+  uses-material-design: true
