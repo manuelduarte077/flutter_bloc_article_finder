@@ -38,6 +38,7 @@ class RWClient {
     final uri = Uri.https(_host, '$_contextRoot/$path', parameters);
     final headers = _headers;
     final results = await http.get(uri, headers: headers);
+
     final jsonObject = json.decode(results.body);
     return jsonObject;
   }

@@ -1,6 +1,7 @@
 //
 import 'package:article_finder/data/article.dart';
 import 'package:article_finder/data/article_formatter_extension.dart';
+import 'package:article_finder/ui/app_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -45,9 +46,18 @@ class ArticleListItem extends StatelessWidget {
                 ],
               ],
             ),
-            Text(
-              article.subscriptionType,
-              style: textTheme.bodyText2,
+            Chip(
+              backgroundColor: AppColors.green,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              label: Text(
+                article.subscriptionType,
+                style: textTheme.bodyText2!.copyWith(
+                  fontSize: 12,
+                  color: Colors.white,
+                ),
+              ),
             ),
             const SizedBox(height: 16),
             if (article.attributes?.description != null)
