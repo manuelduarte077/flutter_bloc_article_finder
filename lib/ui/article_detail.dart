@@ -1,6 +1,7 @@
 //
 import 'package:article_finder/data/article.dart';
 import 'package:article_finder/data/article_formatter_extension.dart';
+import 'package:article_finder/ui/app_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -39,12 +40,38 @@ class ArticleDetail extends StatelessWidget {
                       article.attributes?.name ?? '',
                       style: textTheme.subtitle1,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4),
-                      child: Text(
-                        article.subscriptionType,
-                        style: textTheme.subtitle2,
-                      ),
+                    Row(
+                      children: [
+                        Chip(
+                          backgroundColor: AppColors.green,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          label: Text(
+                            article.subscriptionType,
+                            style: textTheme.bodyText2!.copyWith(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Chip(
+                          backgroundColor: AppColors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          label: Text(
+                            article.attributes!.professional!
+                                ? 'Professional'
+                                : 'Beginner',
+                            style: textTheme.bodyText2!.copyWith(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     if (article.formattedReleaseDate != null)
                       Padding(
@@ -83,7 +110,17 @@ class ArticleDetail extends StatelessWidget {
               article.attributes!.technology_triple_string!,
               style: textTheme.subtitle2,
             ),
-          )
+          ),
+        if (article.attributes?.popularity != null)
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
+            child: Text(
+              article.attributes!.popularity! > 0
+                  ? 'Popularity: ${article.attributes!.popularity}'
+                  : '',
+              style: textTheme.subtitle2,
+            ),
+          ),
       ],
     );
   }
